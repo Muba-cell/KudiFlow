@@ -118,3 +118,105 @@ Stores user reminders and alerts.
 | message | String | Notification content |
 | createdAt | Timestamp | Creation date |
 | isRead | Boolean | Read status |
+
+---
+
+# 8. Database Relationship Model (ERD)
+
+The following relationship model describes how KudiFlow entities are connected.
+
+```
++----------------+
+|     Users      |
++----------------+
+| userId (PK)    |
+| name           |
+| email          |
+| currency       |
+| createdAt      |
++----------------+
+        |
+        |
+        | 1-to-Many
+        |
+        |
++----------------+
+| Transactions   |
++----------------+
+| transactionId PK|
+| userId (FK)    |
+| type           |
+| amount         |
+| category       |
+| description    |
+| date           |
++----------------+
+
+
+        |
+        |
+        | 1-to-Many
+        |
+        |
+
++----------------+
+|    Budgets     |
++----------------+
+| budgetId (PK)  |
+| userId (FK)    |
+| category       |
+| limitAmount    |
+| month          |
++----------------+
+
+
+        |
+        |
+        | 1-to-Many
+        |
+        |
+
++----------------+
+| Savings Goals  |
++----------------+
+| goalId (PK)    |
+| userId (FK)    |
+| goalName       |
+| targetAmount   |
+| currentAmount  |
+| deadline       |
++----------------+
+
+
+        |
+        |
+        | 1-to-Many
+        |
+        |
+
++----------------+
+| Notifications  |
++----------------+
+| notificationId|
+| userId (FK)   |
+| title         |
+| message       |
+| createdAt     |
+| isRead        |
++----------------+
+```
+
+---
+
+## Explanation
+
+The Users collection is the central entity in KudiFlow.
+
+Each user owns their personal financial data. Transactions, budgets, savings goals, and notifications are connected to the user's unique identifier.
+
+This structure ensures:
+
+- User data remains separated and secure.
+- Information can be retrieved efficiently.
+- The database can scale as the number of users grows.
+
