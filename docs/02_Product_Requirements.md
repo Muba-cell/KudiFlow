@@ -318,3 +318,47 @@ The application should:
 - Adapt to different screen sizes.
 - Work effectively across supported mobile devices.
 
+## 7. Future Roadmap
+
+The future roadmap outlines planned improvements and advanced features that will be considered after the initial MVP release.
+
+---
+
+## Version 1.1 - Smart Financial Assistance
+
+Planned features:
+
+- AI-powered financial insights
+- Personalized spending recommendations
+- Financial health score
+- Smart savings suggestions
+
+---
+
+## Version 1.2 - Automated Financial Tracking
+
+Planned features:
+
+- Receipt scanning
+- Automatic transaction categorization
+- Voice-based expense entry
+- Improved notifications
+
+---
+
+## Version 2.0 - Advanced Financial Ecosystem
+
+Planned features:
+
+- Mobile Money transaction integration
+- Investment tracking
+- Family/shared accounts
+- Financial education resources
+- Personalized financial planning
+
+---
+
+## Long-Term Vision
+
+KudiFlow aims to evolve from a simple finance management application into a complete financial companion that helps users understand their money, build better habits, and achieve their financial goals.
+
