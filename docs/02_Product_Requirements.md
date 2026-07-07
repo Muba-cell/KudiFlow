@@ -251,3 +251,70 @@ The system should provide:
 - Monthly summaries
 - Category analysis
 - Savings progress reports
+
+## 6. Non-Functional Requirements
+
+Non-functional requirements define the quality standards and technical expectations for KudiFlow.
+
+---
+
+## 6.1 Performance
+
+The application should:
+
+- Load screens quickly and provide a smooth user experience.
+- Process user actions with minimal delay.
+- Efficiently handle increasing numbers of users and transactions.
+
+---
+
+## 6.2 Security
+
+The application should:
+
+- Protect user financial information.
+- Use secure authentication methods.
+- Store sensitive information securely.
+- Prevent unauthorized access to user accounts.
+
+---
+
+## 6.3 Privacy
+
+The application should:
+
+- Collect only necessary user information.
+- Clearly explain how user data is used.
+- Allow users to manage their personal information.
+
+---
+
+## 6.4 Reliability
+
+The application should:
+
+- Maintain accurate financial records.
+- Minimize data loss.
+- Handle network interruptions gracefully.
+- Provide consistent performance.
+
+---
+
+## 6.5 Usability
+
+The application should:
+
+- Have a simple and intuitive interface.
+- Require minimal learning for new users.
+- Use clear language and understandable financial information.
+
+---
+
+## 6.6 Compatibility
+
+The application should:
+
+- Support Android and iOS platforms.
+- Adapt to different screen sizes.
+- Work effectively across supported mobile devices.
+
