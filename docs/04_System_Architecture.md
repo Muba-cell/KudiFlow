@@ -96,4 +96,66 @@ Responsible for:
 - Notifications
 - Analytics
 
+---
 
+# 4. Security Architecture
+
+Security is a critical component of KudiFlow because the application manages personal financial information.
+
+The security approach focuses on protecting user accounts, preventing unauthorized access, and maintaining user privacy.
+
+---
+
+## 4.1 Authentication Security
+
+KudiFlow will use Firebase Authentication to manage user identity and access.
+
+Security measures include:
+
+- Secure email and password authentication
+- Password reset functionality
+- Session management
+- User identity verification
+
+---
+
+## 4.2 Data Security
+
+User financial data will be protected through:
+
+- Firebase security rules
+- User-specific data access controls
+- Secure communication between the application and backend services
+- Limited access permissions
+
+---
+
+## 4.3 Database Security Rules
+
+Firestore security rules will ensure:
+
+- Users can only access their own financial records.
+- Users cannot view or modify another user's information.
+- Unauthorized requests are rejected.
+
+---
+
+## 4.4 Privacy Protection
+
+KudiFlow will follow privacy-focused practices:
+
+- Collect only necessary user information.
+- Protect user financial records.
+- Provide transparency about data usage.
+- Allow users to manage their account information.
+
+---
+
+## 4.5 Future Security Improvements
+
+Future versions may include:
+
+- Biometric authentication
+- Two-factor authentication
+- Additional account protection methods
+- Advanced fraud detection
