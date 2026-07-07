@@ -151,3 +151,103 @@ As a user, I want to monitor my savings progress so that I remain motivated to r
 **US-010: View Financial Reports**
 
 As a user, I want to view financial reports so that I can understand my financial habits and make better decisions.
+
+## 5. MVP Feature Requirements
+
+The Minimum Viable Product (MVP) of KudiFlow will include the essential features required to help users manage their personal finances effectively.
+
+---
+
+## 5.1 User Authentication
+
+### Description
+Users should be able to securely create accounts and access their personal financial information.
+
+### Requirements
+
+- Users can register using email and password.
+- Users can log in securely.
+- Users can reset forgotten passwords.
+- User sessions should remain secure.
+
+---
+
+## 5.2 Financial Dashboard
+
+### Description
+The dashboard provides users with a summary of their current financial situation.
+
+### Requirements
+
+The dashboard should display:
+
+- Total income
+- Total expenses
+- Current savings progress
+- Recent transactions
+- Budget status
+
+---
+
+## 5.3 Expense Tracking
+
+### Description
+Users should be able to record and manage their daily expenses.
+
+### Requirements
+
+Users can:
+
+- Add expenses
+- Edit expenses
+- Delete expenses
+- Assign expense categories
+- Add descriptions and dates
+
+---
+
+## 5.4 Budget Management
+
+### Description
+Users should be able to create spending limits and monitor their financial discipline.
+
+### Requirements
+
+Users can:
+
+- Create monthly budgets
+- Assign budgets to categories
+- View budget progress
+- Receive budget warnings
+
+---
+
+## 5.5 Savings Goals
+
+### Description
+Users should be able to create and monitor financial goals.
+
+### Requirements
+
+Users can:
+
+- Create savings goals
+- Set target amounts
+- Track progress
+- Update savings contributions
+
+---
+
+## 5.6 Financial Reports
+
+### Description
+Users should be able to understand their financial patterns through simple reports.
+
+### Requirements
+
+The system should provide:
+
+- Spending breakdowns
+- Monthly summaries
+- Category analysis
+- Savings progress reports
