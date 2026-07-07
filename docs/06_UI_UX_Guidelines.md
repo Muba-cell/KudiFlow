@@ -105,5 +105,97 @@ Users should not need financial knowledge to use KudiFlow.
 Every screen should answer one question:
 
 "How does this help the user make a better financial decision?"
+---
 
+# 7. Application Navigation Structure
+
+KudiFlow will use a simple bottom navigation structure to allow users to quickly access the main features of the application.
+
+## Main Navigation
+
+The application will contain five primary sections:
+
+### 1. Home Dashboard
+
+Purpose:
+- Provide an overview of the user's financial status.
+
+Contains:
+- Current balance
+- Income summary
+- Expense summary
+- Savings progress
+- Recent transactions
+
+---
+
+### 2. Transactions
+
+Purpose:
+- Allow users to view and manage financial activities.
+
+Contains:
+- Income records
+- Expense records
+- Transaction history
+- Search and filtering options
+
+---
+
+### 3. Budgets
+
+Purpose:
+- Help users control spending.
+
+Contains:
+- Active budgets
+- Budget progress
+- Category spending limits
+
+---
+
+### 4. Goals
+
+Purpose:
+- Help users save toward financial targets.
+
+Contains:
+- Savings goals
+- Progress tracking
+- Goal milestones
+
+---
+
+### 5. Profile
+
+Purpose:
+- Manage account and application settings.
+
+Contains:
+- User information
+- Preferences
+- Security settings
+- App settings
+
+---
+
+## Navigation Flow
+
+New User:
+
+Splash Screen
+↓
+Onboarding
+↓
+Registration/Login
+↓
+Dashboard
+
+Returning User:
+
+Splash Screen
+↓
+Authentication Check
+↓
+Dashboard
 
