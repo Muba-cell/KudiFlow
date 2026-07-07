@@ -49,3 +49,43 @@ KudiFlow addresses these challenges by providing a simple financial companion th
 ### Goal
 
 The goal of KudiFlow is to make personal finance management simple, accessible, and practical for everyday users.
+
+## 3. Target Users
+
+KudiFlow is designed for individuals who want to improve their financial awareness and develop better money management habits.
+
+### Primary Users
+
+#### 1. Students
+
+Students who want to:
+- Track their limited income or allowances
+- Control daily spending
+- Develop saving habits early
+- Understand basic financial management
+
+#### 2. Young Professionals
+
+Individuals who:
+- Receive regular income
+- Want to manage monthly expenses
+- Plan for financial goals
+- Improve their saving habits
+
+#### 3. Freelancers and Small Business Owners
+
+Individuals who:
+- Have irregular income
+- Need to separate personal and business expenses
+- Track cash flow
+- Monitor financial progress
+
+### User Needs
+
+KudiFlow users need:
+
+- A simple way to record transactions
+- Clear understanding of their spending habits
+- Easy budgeting tools
+- Motivation to achieve savings goals
+- Secure storage of their financial information
