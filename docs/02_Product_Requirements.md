@@ -89,3 +89,65 @@ KudiFlow users need:
 - Easy budgeting tools
 - Motivation to achieve savings goals
 - Secure storage of their financial information
+
+## 4. User Stories
+
+User stories describe the key actions users should be able to perform within KudiFlow.
+
+### Account Management
+
+**US-001: User Registration**
+
+As a new user, I want to create an account so that I can securely access and manage my financial information.
+
+**US-002: User Login**
+
+As a registered user, I want to log into my account so that I can access my personal financial dashboard.
+
+---
+
+### Expense Management
+
+**US-003: Add Expense**
+
+As a user, I want to record my expenses so that I can track where my money is going.
+
+**US-004: View Expenses**
+
+As a user, I want to view my transaction history so that I can understand my spending patterns.
+
+**US-005: Categorize Expenses**
+
+As a user, I want to categorize my expenses so I can identify where I spend the most.
+
+---
+
+### Budget Management
+
+**US-006: Create Budget**
+
+As a user, I want to set spending limits to control my expenses.
+
+**US-007: Monitor Budget Progress**
+
+As a user, I want to see my budget progress so that I know whether I am staying within my limits.
+
+---
+
+### Savings Goals
+
+**US-008: Create Savings Goal**
+
+As a user, I want to create savings goals so that I can work toward achieving financial targets.
+
+**US-009: Track Savings Progress**
+
+As a user, I want to monitor my savings progress so that I remain motivated to reach my goals.
+
+---
+
+### Financial Insights
+
+**US-010: View Financial Reports**
+
+As a user, I want to view financial reports so that I can understand my financial habits and make better decisions.
