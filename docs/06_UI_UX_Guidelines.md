@@ -199,3 +199,94 @@ Authentication Check
 ↓
 Dashboard
 
+---
+
+# 8. Screen Specifications
+
+## 8.1 Splash Screen
+
+### Purpose
+
+The splash screen introduces users to KudiFlow while the application initializes necessary services.
+
+---
+
+## Design Elements
+
+### Logo
+
+Display:
+- KudiFlow logo
+- Financial growth symbol (future logo design)
+
+Position:
+- Center of screen
+
+---
+
+### App Name
+
+Text:
+
+KudiFlow
+
+Style:
+- Large
+- Bold
+- Modern typography
+
+---
+
+### Tagline
+
+Text:
+
+"Flow Smarter. Grow Wealthier."
+
+Style:
+- Simple
+- Supporting text below app name
+
+---
+
+## Background
+
+The splash screen should use the primary brand color.
+
+Design goal:
+
+Create a feeling of:
+- Trust
+- Growth
+- Financial confidence
+
+---
+
+## User Flow
+
+When the application launches:
+
+1. Display splash screen.
+2. Initialize application services.
+3. Check authentication status.
+4. Navigate user:
+
+New user:
+→ Onboarding Screen
+
+Existing user:
+→ Dashboard
+
+---
+
+## Technical Notes
+
+The splash screen will handle:
+
+- Application startup
+- Firebase initialization
+- Authentication state checking
+- Initial navigation decision
+
+
+
