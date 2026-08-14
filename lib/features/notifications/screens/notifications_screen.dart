@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
-import '../../../shared/models/app_notification.dart';
 import '../../../shared/models/budget.dart';
 import '../../../shared/models/savings_goal.dart';
 import '../../../shared/models/transaction.dart';
@@ -46,18 +45,18 @@ class NotificationsScreen extends StatelessWidget {
                   );
 
                   if (notifications.isEmpty) {
-                    return Center(
+                    return const Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Icons.notifications_none, size: 48, color: Colors.black26),
-                          const SizedBox(height: 12),
-                          const Text(
+                          Icon(Icons.notifications_none, size: 48, color: Colors.black26),
+                          SizedBox(height: 12),
+                          Text(
                             "You're all caught up.",
                             style: TextStyle(color: Colors.black45),
                           ),
-                          const SizedBox(height: 4),
-                          const Text(
+                          SizedBox(height: 4),
+                          Text(
                             "Budget and savings alerts will show up here.",
                             style: TextStyle(color: Colors.black38, fontSize: 12),
                           ),
