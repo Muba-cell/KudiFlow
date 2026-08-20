@@ -85,7 +85,12 @@ class _SavingsGoalsScreenState extends State<SavingsGoalsScreen> {
                     savedAmount: 0,
                   );
                   await SavingsGoalService.addGoal(_uid, goal);
-                  if (context.mounted) Navigator.pop(context);
+                  if (context.mounted) {
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Goal created"), duration: Duration(seconds: 2)),
+                    );
+                  }
                 } catch (e) {
                   setDialogState(() => errorText = "Couldn't save: $e");
                 }
@@ -115,10 +120,11 @@ class _SavingsGoalsScreenState extends State<SavingsGoalsScreen> {
               children: [
                 TextFormField(
                   controller: amountController,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
                   autofocus: true,
                   decoration: const InputDecoration(
                     labelText: "Amount (GH₵)",
+                    hintText: "e.g. 50, or -20 to correct a mistake",
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
@@ -126,8 +132,8 @@ class _SavingsGoalsScreenState extends State<SavingsGoalsScreen> {
                       return "Enter an amount";
                     }
                     final parsed = double.tryParse(value);
-                    if (parsed == null || parsed <= 0) {
-                      return "Enter a valid amount";
+                    if (parsed == null || parsed == 0) {
+                      return "Enter a valid, non-zero amount";
                     }
                     return null;
                   },
@@ -160,7 +166,12 @@ class _SavingsGoalsScreenState extends State<SavingsGoalsScreen> {
                     goal.name,
                     amount,
                   );
-                  if (context.mounted) Navigator.pop(context);
+                  if (context.mounted) {
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Contribution added"), duration: Duration(seconds: 2)),
+                    );
+                  }
                 } catch (e) {
                   setDialogState(() => errorText = "Couldn't save: $e");
                 }
@@ -193,6 +204,11 @@ class _SavingsGoalsScreenState extends State<SavingsGoalsScreen> {
     );
     if (confirmed == true && goal.id != null) {
       await SavingsGoalService.deleteGoal(_uid, goal.id!);
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Goal deleted"), duration: Duration(seconds: 2)),
+        );
+      }
     }
   }
 

@@ -23,6 +23,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
       text: existing != null ? existing.limit.toStringAsFixed(0) : "",
     );
     final formKey = GlobalKey<FormState>();
+    String? errorText;
 
     await showDialog(
       context: context,
@@ -67,6 +68,10 @@ class _BudgetScreenState extends State<BudgetScreen> {
                     return null;
                   },
                 ),
+                if (errorText != null) ...[
+                  const SizedBox(height: 12),
+                  Text(errorText!, style: const TextStyle(color: Colors.red, fontSize: 13)),
+                ],
               ],
             ),
           ),
@@ -78,12 +83,21 @@ class _BudgetScreenState extends State<BudgetScreen> {
             ElevatedButton(
               onPressed: () async {
                 if (!formKey.currentState!.validate()) return;
-                final limit = double.parse(limitController.text);
-                await BudgetService.setBudget(
-                  _uid,
-                  Budget(category: selectedCategory, limit: limit),
-                );
-                if (context.mounted) Navigator.pop(context);
+                try {
+                  final limit = double.parse(limitController.text);
+                  await BudgetService.setBudget(
+                    _uid,
+                    Budget(category: selectedCategory, limit: limit),
+                  );
+                  if (context.mounted) {
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Budget saved"), duration: Duration(seconds: 2)),
+                    );
+                  }
+                } catch (e) {
+                  setDialogState(() => errorText = "Couldn't save. Please try again.");
+                }
               },
               child: const Text("Save"),
             ),
@@ -113,6 +127,11 @@ class _BudgetScreenState extends State<BudgetScreen> {
     );
     if (confirmed == true) {
       await BudgetService.deleteBudget(_uid, category);
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Budget removed"), duration: Duration(seconds: 2)),
+        );
+      }
     }
   }
 

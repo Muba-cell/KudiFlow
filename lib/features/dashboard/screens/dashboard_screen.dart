@@ -35,6 +35,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void _deleteTransaction(Transaction tx) {
     if (tx.id == null) return;
     TransactionService.deleteTransaction(_uid, tx.id!);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Transaction deleted"), duration: Duration(seconds: 2)),
+    );
   }
 
   Future<void> _confirmDelete(Transaction tx) async {
@@ -70,6 +73,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
     if (result != null && result is Transaction) {
       await TransactionService.updateTransaction(_uid, result);
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Transaction updated"), duration: Duration(seconds: 2)),
+        );
+      }
     }
   }
 
@@ -80,6 +88,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
     if (result != null && result is Transaction) {
       await TransactionService.addTransaction(_uid, result);
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Transaction added"), duration: Duration(seconds: 2)),
+        );
+      }
     }
   }
 
@@ -167,9 +180,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
             return Center(
               child: Padding(
                 padding: const EdgeInsets.all(24),
-                child: Text(
-                  "Couldn't load your transactions: ${snapshot.error}",
-                  textAlign: TextAlign.center,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.cloud_off_outlined, size: 48, color: Colors.black26),
+                    const SizedBox(height: 12),
+                    const Text(
+                      "Couldn't load your transactions.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      "Check your connection and try again.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black54, fontSize: 13),
+                    ),
+                    const SizedBox(height: 16),
+                    OutlinedButton.icon(
+                      onPressed: () => setState(() {}),
+                      icon: const Icon(Icons.refresh),
+                      label: const Text("Retry"),
+                    ),
+                  ],
                 ),
               ),
             );

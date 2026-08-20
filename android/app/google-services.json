@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "766668517741",
+    "project_id": "kudiflow-f9827",
+    "storage_bucket": "kudiflow-f9827.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766668517741:android:2682b23e9e18bf922daa64",
+        "android_client_info": {
+          "package_name": "com.kudiflow.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766668517741-s1s0amapviebsdq5ulunftnf2fnuqqs2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXy3th9-J3YX8YQDSEszrBzYdYVJhbFrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766668517741-s1s0amapviebsdq5ulunftnf2fnuqqs2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766668517741-7hdsfs6haqf6lorjq98v1sh0qde7nasa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kudiflow.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

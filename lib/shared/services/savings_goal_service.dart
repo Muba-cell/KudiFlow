@@ -28,9 +28,15 @@ class SavingsGoalService {
     return _collection(uid).doc(goal.id).update(goal.toFirestore());
   }
 
-  /// Adds a contribution to a goal AND records it as a real "Savings"
-  /// expense transaction, so it actually deducts from the user's balance.
-  /// This keeps the dashboard balance as the single source of truth.
+  /// Adds (or, with a negative amount, corrects/reduces) a goal's saved
+  /// total, and records a matching transaction so the balance always
+  /// reflects reality.
+  ///
+  /// Positive amount: recorded as a "Savings" expense (money set aside,
+  /// balance goes down).
+  /// Negative amount: recorded as a "Savings" income (money returned to
+  /// spendable balance, goal total goes down) — this is how mistakes
+  /// get corrected, as a new event rather than silently rewriting history.
   static Future<void> addContribution(
     String uid,
     String goalId,
@@ -41,13 +47,17 @@ class SavingsGoalService {
       'savedAmount': FieldValue.increment(amount),
     });
 
+    final isCorrection = amount < 0;
+
     await TransactionService.addTransaction(
       uid,
       model.Transaction(
-        title: 'Savings: $goalName',
-        type: 'Expense',
+        title: isCorrection
+            ? 'Savings correction: $goalName'
+            : 'Savings: $goalName',
+        type: isCorrection ? 'Income' : 'Expense',
         category: 'Savings',
-        amount: -amount,
+        amount: isCorrection ? amount.abs() : -amount,
         date: DateTime.now(),
       ),
     );

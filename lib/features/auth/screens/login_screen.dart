@@ -45,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
           );
 
     if (!mounted) return;
+
     setState(() => isSubmitting = false);
 
     if (error != null) {
@@ -52,15 +53,47 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
+    _goAfterAuthentication();
+  }
+
+  Future<void> _signInWithGoogle() async {
+    setState(() {
+      errorMessage = null;
+      errorIsSuccess = false;
+      isSubmitting = true;
+    });
+
+    final error = await AuthService.signInWithGoogle();
+
+    if (!mounted) return;
+
+    setState(() => isSubmitting = false);
+
+    if (error != null) {
+      setState(() {
+        errorMessage = error;
+        errorIsSuccess = false;
+      });
+      return;
+    }
+
+    _goAfterAuthentication();
+  }
+
+  void _goAfterAuthentication() {
     if (AuthService.isEmailVerified) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const AppLockScreen()),
+        MaterialPageRoute(
+          builder: (_) => const AppLockScreen(),
+        ),
       );
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const VerifyEmailScreen()),
+        MaterialPageRoute(
+          builder: (_) => const VerifyEmailScreen(),
+        ),
       );
     }
   }
@@ -70,7 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (email.isEmpty || !_emailRegex.hasMatch(email)) {
       setState(() {
-        errorMessage = "Enter your email above first, then tap 'Forgot password?'";
+        errorMessage =
+            "Enter your email above first, then tap 'Forgot password?'";
         errorIsSuccess = false;
       });
       return;
@@ -82,8 +116,12 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: email,
+      );
+
       if (!mounted) return;
+
       setState(() {
         isSubmitting = false;
         errorMessage = "Password reset email sent to $email. Check your inbox.";
@@ -91,9 +129,11 @@ class _LoginScreenState extends State<LoginScreen> {
       });
     } on FirebaseAuthException catch (e) {
       if (!mounted) return;
+
       setState(() {
         isSubmitting = false;
         errorIsSuccess = false;
+
         if (e.code == 'user-not-found') {
           errorMessage = "No account found with that email.";
         } else {
@@ -101,6 +141,13 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       });
     }
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -144,7 +191,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 40),
-
               Container(
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
@@ -164,7 +210,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 20),
-
                       TextFormField(
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
@@ -179,14 +224,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (value == null || value.trim().isEmpty) {
                             return "Please enter your email";
                           }
+
                           if (!_emailRegex.hasMatch(value.trim())) {
                             return "Enter a valid email address";
                           }
+
                           return null;
                         },
                       ),
                       const SizedBox(height: 16),
-
                       TextFormField(
                         controller: passwordController,
                         obscureText: true,
@@ -205,20 +251,25 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (value == null || value.isEmpty) {
                             return "Please enter a password";
                           }
+
                           if (isSignUpMode) {
                             if (value.length < 6) {
                               return "Password must be at least 6 characters";
                             }
-                            final hasLetter = RegExp(r'[A-Za-z]').hasMatch(value);
+
+                            final hasLetter =
+                                RegExp(r'[A-Za-z]').hasMatch(value);
+
                             final hasDigit = RegExp(r'[0-9]').hasMatch(value);
+
                             if (!hasLetter || !hasDigit) {
                               return "Include at least one letter and one number";
                             }
                           }
+
                           return null;
                         },
                       ),
-
                       if (!isSignUpMode) ...[
                         Align(
                           alignment: Alignment.centerRight,
@@ -228,20 +279,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ],
-
                       if (errorMessage != null) ...[
                         const SizedBox(height: 6),
                         Text(
                           errorMessage!,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: errorIsSuccess ? Colors.green.shade700 : Colors.red,
+                            color: errorIsSuccess
+                                ? Colors.green.shade700
+                                : Colors.red,
                             fontSize: 13,
                           ),
                         ),
                       ],
-
                       const SizedBox(height: 20),
-
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -250,21 +301,64 @@ class _LoginScreenState extends State<LoginScreen> {
                               ? const SizedBox(
                                   height: 18,
                                   width: 18,
-                                  child: CircularProgressIndicator(strokeWidth: 2),
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
                                 )
-                              : Text(isSignUpMode ? "Sign Up" : "Login"),
+                              : Text(
+                                  isSignUpMode ? "Sign Up" : "Login",
+                                ),
                         ),
                       ),
-
+                      const SizedBox(height: 16),
+                      Row(
+                        children: [
+                          const Expanded(
+                            child: Divider(),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                            ),
+                            child: Text(
+                              "OR",
+                              style: TextStyle(
+                                color: Colors.grey.shade600,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          const Expanded(
+                            child: Divider(),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: OutlinedButton.icon(
+                          onPressed: isSubmitting ? null : _signInWithGoogle,
+                          icon: const Icon(
+                            Icons.g_mobiledata,
+                            size: 28,
+                          ),
+                          label: const Text(
+                            "Continue with Google",
+                          ),
+                        ),
+                      ),
                       const SizedBox(height: 12),
-
                       TextButton(
-                        onPressed: () {
-                          setState(() {
-                            isSignUpMode = !isSignUpMode;
-                            errorMessage = null;
-                          });
-                        },
+                        onPressed: isSubmitting
+                            ? null
+                            : () {
+                                setState(() {
+                                  isSignUpMode = !isSignUpMode;
+                                  errorMessage = null;
+                                });
+                              },
                         child: Text(
                           isSignUpMode
                               ? "Already have an account? Log in"

@@ -1,4 +1,4 @@
-package com.example.kudiflow
+package com.kudiflow.app
 
 import io.flutter.embedding.android.FlutterActivity
 
