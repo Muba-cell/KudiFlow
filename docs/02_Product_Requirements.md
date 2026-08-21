@@ -166,6 +166,7 @@ Users should be able to securely create accounts and access their personal finan
 ### Requirements
 
 - Users can register using email and password.
+- Users can sign in using Google.
 - Users can log in securely.
 - Users can reset forgotten passwords.
 - User sessions should remain secure.
