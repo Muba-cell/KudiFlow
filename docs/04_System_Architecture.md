@@ -113,6 +113,7 @@ KudiFlow will use Firebase Authentication to manage user identity and access.
 Security measures include:
 
 - Secure email and password authentication
+- Google Sign-In
 - Password reset functionality
 - Session management
 - User identity verification
